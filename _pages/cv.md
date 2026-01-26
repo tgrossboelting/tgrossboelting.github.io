@@ -11,23 +11,9 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, Universität Mannheim, 2027 (expected)
+* Ph.D in Economics, Universität Mannheim, 2027 (expected)
 * Visiting Researcher, Yale University, 2024-2025
 * M.Sc. Economics, Humboldt-Universität zu Berlin, 2021
 * B.Sc. Economics, Humboldt-Universität zu Berlin, 2018
 
-
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
 
