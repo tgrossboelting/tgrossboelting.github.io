@@ -9,4 +9,4 @@ redirect_from:
 
 I am a Ph.D. candidate at Mannheim University, supervised by Christoph Rothe and Paul Goldsmith-Pinkham.\
 \
-My research interests are in Econometrics and Causal Inference. Currently, I work on heterogeneity in Regression Discontinuity Designs and its implications for estimation and inference.
+My research interests are in Econometrics and Causal Inference. Currently, I am working on heterogeneity in Regression Discontinuity Designs and its implications for estimation and inference.
