@@ -1,7 +1,7 @@
 ---
 title: "Heterogeneous Groups in Regression Discontinuity Designs"
 collection: publications
-category: manuscripts
+category: working
 permalink: /2026_01_26_heterogeneous_groups_in_RDDs
 excerpt: 'In this paper, I study covariate adjustment in regression discontinuity designs estimated with
 data from potentially heterogeneous groups.'
