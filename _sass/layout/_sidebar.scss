@@ -316,6 +316,10 @@
     font-size: $type-size-5;
     text-decoration: none;
 
+    @include breakpoint($large) {
+      width: fit-content;
+    }
+
     &:hover {
       text-decoration: underline;
     }
