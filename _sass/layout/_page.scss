@@ -4,7 +4,6 @@
 
 #main {
   @include container;
-  @include clearfix;
   margin-top: 2em;
   padding-left: 1em;
   padding-right: 1em;
@@ -14,12 +13,17 @@
   @include breakpoint($x-large) {
     max-width: $x-large;
   }
+
+  @include breakpoint($large) {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    column-gap: 2rem;
+  }
 }
 
 .page {
   @include breakpoint($large) {
-    @include span(7 of 12 last);
-    @include suffix(2 of 12);
+    max-width: 720px;
   }
 
   .page__inner-wrap {

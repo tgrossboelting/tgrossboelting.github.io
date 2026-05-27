@@ -10,7 +10,7 @@
   }
 
   @include breakpoint($large) {
-    @include span(9 of 12 last);
+    max-width: 820px;
   }
 
   a {
