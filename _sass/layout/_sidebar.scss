@@ -26,6 +26,15 @@
     &:hover {
       opacity: 1;
     }
+
+    // Cancel the generic `.sticky` behavior (position: sticky; top: 2em) that
+    // is applied via the sidebar's `sticky` class. With the sidebar in normal
+    // flow it sits at the top of its column, aligned with the page heading,
+    // and scrolls with the page instead of drifting down on scroll.
+    &.sticky {
+      position: relative;
+      top: auto;
+    }
   }
 
   @include breakpoint($x-large) {
