@@ -58,14 +58,14 @@ function updateNav() {
   // Keep counter updated
   $btn.attr("count", breaks.length);
 
-  // update masthead height and the body/sidebar top padding
+  // update masthead height; the body offsets the fixed masthead
   var mastheadHeight = $('.masthead').height();
   $('body').css('padding-top', mastheadHeight + 'px');
-  if ($(".author__urls-wrapper button").is(":visible")) {
-    $(".sidebar").css("padding-top", "");
-  } else {
-    $(".sidebar").css("padding-top", mastheadHeight + "px");
-  }
+  // The sidebar is no longer position:fixed, so it must NOT be padded by the
+  // masthead height -- doing so pushed the avatar down below the page text on
+  // wide (iPad/desktop) screens. #main already clears the masthead, so leave
+  // the sidebar flush with the content column on every width.
+  $(".sidebar").css("padding-top", "");
 
 }
 
