@@ -8,5 +8,3 @@ date: 2026-05-27
 coauthors: "Soonwoo Kwon, Michael Pollmann and Aurel Rochell"
 ---
 Joint with Soonwoo Kwon, Michael Pollmann and Aurel Rochell.
-</content>
-</invoke>
