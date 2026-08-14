@@ -6,6 +6,13 @@
  *
  * Note that the files are processed in the order they are imported, so they are partly
    sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
+ *
+ * Two site-specific partials are imported below:
+ *   custom_variables - sits after the themes (which define the variables) and
+ *                      before layout/base (which consumes them), so redefining
+ *                      e.g. $global-font-family there reaches every rule.
+ *   custom           - sits last, so its rules win on equal specificity.
+ * Both are kept out of the vendored theme files so upstream updates stay mergeable.
  */
 
 @import
@@ -14,6 +21,8 @@
     "themes",
     "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
     "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
+
+    "custom_variables",
 
     "include/mixins",
     "vendor/susy/susy",
@@ -39,5 +48,7 @@
 
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",
-    "vendor/font-awesome/brands"
+    "vendor/font-awesome/brands",
+
+    "custom"
 ;

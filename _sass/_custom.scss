@@ -1,0 +1,47 @@
+/* ==========================================================================
+   CUSTOM RULE OVERRIDES
+
+   Imported last from assets/css/main.scss, so these win over the vendored
+   theme files on equal specificity without needing !important. Keep site
+   customisation here rather than editing _themes.scss or layout/*.scss, so
+   upstream academicpages updates can still be pulled cleanly.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   MEASURE (line length)
+
+   #main caps at $x-large (1280px) and .page takes span(9 of 12) of it, leaving
+   a ~900px text column. At $doc-font-size 16px that is roughly 112 characters
+   per line; comfortable reading is 45-75, ideal around 66.
+
+   38em is about 76 characters. Lower to 34em for ~68 if it still reads long.
+   The cap is on the text elements rather than on .page, so tables, figures and
+   the publication list keep the full column width.
+   -------------------------------------------------------------------------- */
+.page__content {
+  p,
+  li,
+  dl,
+  blockquote {
+    max-width: 38em;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   LINK COLOUR
+
+   #1a5fb4 is the exact blue defined as `linkblue` in the CV preamble, so the
+   site and the PDF read as one identity. The dark-theme values are lightened;
+   #1a5fb4 does not carry enough contrast against a dark background.
+   -------------------------------------------------------------------------- */
+:root {
+  --global-link-color         : #1a5fb4;
+  --global-link-color-hover   : #14488a;
+  --global-link-color-visited : #1a5fb4;
+}
+
+html[data-theme="dark"] {
+  --global-link-color         : #7ab0e8;
+  --global-link-color-hover   : #a8cbf0;
+  --global-link-color-visited : #7ab0e8;
+}

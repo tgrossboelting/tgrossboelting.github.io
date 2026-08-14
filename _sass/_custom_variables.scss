@@ -1,0 +1,20 @@
+/* ==========================================================================
+   CUSTOM VARIABLE OVERRIDES
+
+   Imported from assets/css/main.scss AFTER "themes" but BEFORE "layout/base",
+   so redefinitions here reach every rule that consumes them. Overriding these
+   as plain CSS later would not work: layout/base.scss reads the variables at
+   import time, so a late override would have to re-enumerate every selector.
+
+   Kept out of _themes.scss so upstream academicpages updates stay mergeable.
+   ========================================================================== */
+
+/* Palatino, to match the CV (which sets mathpazo / URWPalladioL).
+   Palatino ships with macOS, Palatino Linotype with Windows, Book Antiqua with
+   Office. Georgia is the fallback: different face, but similar proportions and
+   x-height, so the page does not reflow noticeably when it is used. */
+$palatino: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+
+$global-font-family  : $palatino;
+$header-font-family  : $palatino;
+$caption-font-family : $palatino;
