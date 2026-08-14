@@ -28,6 +28,42 @@
 }
 
 /* --------------------------------------------------------------------------
+   LARGE-SCREEN SCALING
+
+   The theme stops scaling at $medium (768px): layout/reset.scss steps the root
+   font from 16px to 18px there and never again, so on a 2560px monitor the text
+   is the same physical size as on a laptop while the layout sits in a 1280px
+   island. The avatar and #main are likewise capped in px.
+
+   Fix: step the root font up on wide viewports, and express the two caps in em
+   so they scale with it. Because the measure above is also in em, line length
+   stays at ~76 characters at every step -- the text gets bigger, not wider.
+
+   Note media-query em always resolves against the browser default (16px), never
+   against the html font-size set here, so the theme's existing em breakpoints
+   are unaffected by these steps.
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 1600px) {
+  html { font-size: 20px; }
+}
+
+@media screen and (min-width: 2200px) {
+  html { font-size: 22px; }
+}
+
+#main {
+  @include breakpoint($x-large) {
+    max-width: 80em;
+  }
+}
+
+.author__avatar img {
+  @include breakpoint($large) {
+    max-width: 15.5em;
+  }
+}
+
+/* --------------------------------------------------------------------------
    LINK COLOUR
 
    #1a5fb4 is the exact blue defined as `linkblue` in the CV preamble, so the
