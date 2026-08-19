@@ -128,6 +128,18 @@
   @include breakpoint($large) {
     max-width: 15.5rem;
   }
+
+  /* The headshot file is a wide landscape frame (2048x1365) with a lot of door
+     behind the subject, so shown at its native ratio the face ends up small.
+     Crop to a portrait box in CSS rather than editing the file, so the original
+     stays intact and the framing is one number to tune.
+
+     object-position Y is above centre because the face sits in the upper half;
+     raise it towards 0% to show more forehead, lower towards 100% for more
+     shoulder. */
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 28%;
 }
 
 /* --------------------------------------------------------------------------
@@ -147,4 +159,107 @@ html[data-theme="dark"] {
   --global-link-color         : #7ab0e8;
   --global-link-color-hover   : #a8cbf0;
   --global-link-color-visited : #7ab0e8;
+}
+
+/* --------------------------------------------------------------------------
+   PAGE FIGURES  (_includes/page-figure.html)
+
+   Full column width with an optional caption. The measure cap in the MEASURE
+   block above deliberately targets only p/li/dl/blockquote, so figures are
+   free to use the whole content column.
+   -------------------------------------------------------------------------- */
+.page-figure {
+  margin: 2em 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--global-border-color);
+  }
+
+  figcaption {
+    margin-top: 0.5em;
+    font-size: $type-size-6;
+    font-style: italic;
+    color: var(--global-text-color-light);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESEARCH LIST  (_includes/archive-single.html)
+
+   Spacing and the collapsed-abstract disclosure. Each paper is a block with
+   room to breathe; the abstract stays folded so the list of titles is
+   scannable, which is how the stronger job-market pages handle it.
+   -------------------------------------------------------------------------- */
+.archive__item-meta {
+  margin: 0.25em 0;
+  font-size: $type-size-6;
+}
+
+.archive__item-status {
+  font-weight: bold;
+}
+
+.archive__item-links {
+  margin: 0.5em 0;
+  font-size: $type-size-6;
+
+  a + a {
+    margin-left: 0.75em;
+    padding-left: 0.75em;
+    border-left: 1px solid var(--global-border-color);
+  }
+}
+
+.archive__item-abstract {
+  margin: 0.5em 0 0;
+  font-size: $type-size-6;
+
+  summary {
+    cursor: pointer;
+    color: var(--global-link-color);
+    width: fit-content;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  /* The abstract body is prose, so give it the same measure as the page. */
+  .archive__item-abstract-body {
+    margin-top: 0.5em;
+    max-width: 38em;
+  }
+}
+
+.research-list .archive__item {
+  margin-bottom: 2.5em;
+}
+
+/* --------------------------------------------------------------------------
+   REFERENCE LIST  (_includes/job-market.html)
+
+   Names sit flush left with the affiliation set quieter beside them, so the
+   three names stay scannable. Driven by _data/jobmarket.yml; the whole block
+   disappears if that list is emptied.
+   -------------------------------------------------------------------------- */
+.reference-list {
+  margin-top: 0;
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    margin-bottom: 0.25em;
+  }
+
+  &__affiliation {
+    color: var(--global-text-color-light);
+
+    &::before {
+      content: ", ";
+      color: var(--global-text-color-light);
+    }
+  }
 }
