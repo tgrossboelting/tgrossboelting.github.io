@@ -1,0 +1,27 @@
+{% comment %}
+  Captioned figure for page bodies. Full column width, scales down on small
+  screens, caption optional.
+
+  Usage from any .md or .html page:
+
+    {% include page-figure.html
+         src="GroßböltingTobiasYale.jpg"
+         alt="Tobias Großbölting presenting at Yale University"
+         caption="Presenting at Yale, 2025" %}
+
+  src     filename in /images/, or a full URL
+  alt     required -- screen readers and image search both use it
+  caption optional -- the <figcaption> is omitted entirely when absent
+
+  Also usable for paper figures on publication pages, which is the pattern the
+  stronger job-market sites use (a small result plot next to each paper).
+{% endcomment %}
+{% include base_path %}
+<figure class="page-figure">
+  <img src="{% if include.src contains '://' %}{{ include.src }}{% else %}{{ include.src | prepend: '/images/' | prepend: base_path }}{% endif %}"
+       alt="{{ include.alt }}"
+       loading="lazy">
+  {% if include.caption %}
+    <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>
