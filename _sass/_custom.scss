@@ -53,13 +53,80 @@
 
 #main {
   @include breakpoint($x-large) {
-    max-width: 80em;
+    /* Was 80em. The text measure caps at 38em (see MEASURE above), so at 80em
+       the content column ran ~55em wide with ~17em of it permanently empty --
+       which is what made the text look stranded far from the avatar on wide
+       monitors. 66em sizes the pair so the content column lands near the
+       measure: full-width elements (tables, figures, the publication list)
+       still get ~46em, but the dead gutter is gone. Tune this one number to
+       move the text left or right; nothing else depends on it. */
+    max-width: 66em;
   }
 }
 
+/* --------------------------------------------------------------------------
+   TWO-COLUMN LAYOUT (sidebar + content)
+
+   Replaces the Susy float grid for this one pair. Susy compiled
+   .sidebar and .page into floats whose widths had to sum to exactly 100%:
+
+     .sidebar { width: 23.7288135593%; float: left;  margin-right: 1.6949152542%; }
+     .page    { width: 74.5762711864%; float: right; margin-right: 0; }
+
+   23.7288 + 1.6949 + 74.5763 = 100.0000%. Any edit that pushed the total over
+   100% -- a margin, a padding without border-box, a widened column -- made the
+   second float wrap onto the next line, which is why narrowing the text made
+   the avatar vanish rather than merely look wrong.
+
+   Grid has no such coupling: fr tracks always fit the container by definition,
+   so the columns cannot be made to overflow each other. Changing one column no
+   longer silently changes the other.
+
+   #main's children are .sidebar, then .page (single.html) or .archive
+   (archive.html), and optionally .page__related.
+   -------------------------------------------------------------------------- */
+@include breakpoint($large) {
+  #main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
+    column-gap: 2.5em;
+    align-items: start;
+
+    /* @include clearfix on #main (layout/page.scss) emits an ::after pseudo-
+       element. Harmless around floats, but a grid container turns it into a
+       real grid item that would claim a cell. */
+    &::after {
+      display: none;
+    }
+  }
+
+  /* Unset the Susy float geometry these still carry from layout/*.scss. */
+  .sidebar,
+  .page,
+  .archive {
+    width: auto;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Sibling of .page, so grid would otherwise drop it into the sidebar column
+     on the next row. */
+  .page__related {
+    grid-column: 2;
+  }
+}
+
+/* rem, NOT em. layout/sidebar.scss sets `.author__avatar { font-size: 0 }` at
+   $large to strip inline-block whitespace, and em resolves against the
+   element's OWN font-size -- so `max-width: 15.5em` computed to 15.5 * 0 = 0px
+   and collapsed the avatar to nothing on every viewport >= 925px, whatever
+   number was written here. rem resolves against the root font-size, which is
+   what the LARGE-SCREEN SCALING note above actually intended: the cap steps
+   with html{font-size} at 1600px and 2200px. */
 .author__avatar img {
   @include breakpoint($large) {
-    max-width: 15.5em;
+    max-width: 15.5rem;
   }
 }
 
