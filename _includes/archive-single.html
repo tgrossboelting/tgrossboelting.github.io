@@ -88,5 +88,72 @@
     {% endif %}
     {% endunless %}
 
+    {% comment %}
+      ------------------------------------------------------------------
+      PUBLICATION DETAIL
+
+      The block above excludes collection == 'publications' entirely, so
+      papers used to render as a bare title plus coauthors -- the abstract
+      written in the file body was never displayed anywhere.
+
+      Everything below is optional and renders ONLY when the corresponding
+      front-matter key is present, so a paper with nothing filled in still
+      shows just its title. Add fields as the work progresses:
+
+        status        : "Revise and Resubmit, Journal of Econometrics"
+        awards        : "Best Paper Award, ..."
+        presentations : "Yale (2025), ESWM (2026), ..."
+        paperurl      : "/files/jmp.pdf"     (or a full https:// URL)
+        slidesurl     : "/files/jmp-slides.pdf"
+        bibtexurl     : "/files/jmp.bib"
+        codeurl       : "https://github.com/..."
+
+      The abstract is taken from the file body, so it needs no new field.
+      ------------------------------------------------------------------
+    {% endcomment %}
+    {% if post.collection == 'publications' %}
+
+      {% if post.status %}
+        <p class="archive__item-meta archive__item-status">{{ post.status }}</p>
+      {% endif %}
+
+      {% if post.awards %}
+        <p class="archive__item-meta"><strong>Awards:</strong> {{ post.awards }}</p>
+      {% endif %}
+
+      {% if post.presentations %}
+        <p class="archive__item-meta"><strong>Presentations:</strong> {{ post.presentations }}</p>
+      {% endif %}
+
+      {% if post.paperurl or post.slidesurl or post.bibtexurl or post.codeurl %}
+        <p class="archive__item-links">
+          {% if post.paperurl %}<a href="{% unless post.paperurl contains '://' %}{{ base_path }}{% endunless %}{{ post.paperurl }}">Paper</a>{% endif %}
+          {% if post.slidesurl %}<a href="{% unless post.slidesurl contains '://' %}{{ base_path }}{% endunless %}{{ post.slidesurl }}">Slides</a>{% endif %}
+          {% if post.bibtexurl %}<a href="{% unless post.bibtexurl contains '://' %}{{ base_path }}{% endunless %}{{ post.bibtexurl }}">BibTeX</a>{% endif %}
+          {% if post.codeurl %}<a href="{% unless post.codeurl contains '://' %}{{ base_path }}{% endunless %}{{ post.codeurl }}">Code</a>{% endif %}
+        </p>
+      {% endif %}
+
+      {% comment %}
+        Folded by default so the list of titles stays scannable; this is the
+        pattern the stronger job-market pages use. <details> is native HTML,
+        so it needs no JavaScript and stays open for in-page search.
+
+        The abstract is the file body, so no new front-matter field is needed
+        for the common case. Where the body holds something that is not an
+        abstract, switch the disclosure off per paper with:
+
+          show_abstract: false
+      {% endcomment %}
+      {% assign abstract = post.content | strip %}
+      {% if abstract != '' and post.show_abstract != false %}
+        <details class="archive__item-abstract">
+          <summary>Show abstract</summary>
+          <div class="archive__item-abstract-body">{{ post.content }}</div>
+        </details>
+      {% endif %}
+
+    {% endif %}
+
   </article>
 </div>
