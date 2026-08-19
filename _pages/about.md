@@ -11,3 +11,7 @@ I am a fifth-year Ph.D. candidate at the University of Mannheim, supervised by [
 My research interests are in Econometrics and Causal Inference. Currently, I am working on heterogeneity in Regression Discontinuity Designs and its implications for estimation and inference.\
 \
 I am on the 2026/2027 job market.
+
+You can download my [CV]({{ site.baseurl }}/files/CV_Tobias_Grossboelting.pdf) (PDF).
+
+{% include job-market.html %}

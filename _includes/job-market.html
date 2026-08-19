@@ -1,0 +1,55 @@
+{% comment %}
+  Job-market block for the homepage: references, placement officer, and an
+  explicit invitation to get in touch.
+
+  Data comes from _data/jobmarket.yml, except the email address, which is read
+  from `author.email` in _config.yml so it is defined in exactly one place.
+
+  Every section is conditional. With jobmarket.yml left as shipped (all keys
+  commented out) only the contact line renders, so the page never shows an
+  empty "References:" label waiting to be filled.
+
+  Usage:  {% include job-market.html %}
+{% endcomment %}
+{% assign jm = site.data.jobmarket %}
+
+{% if jm.status %}
+  <p><strong>{{ jm.status }}</strong></p>
+{% endif %}
+
+{% if jm.references and jm.references.size > 0 %}
+  <p><strong>References</strong></p>
+  <ul class="reference-list">
+    {% for ref in jm.references %}
+      {% if ref.name %}
+        {%- comment -%}
+          Whitespace control matters here: the affiliation's ::before supplies
+          the comma, so any newline left between the name and the span renders
+          as "Name , Affiliation".
+        {%- endcomment -%}
+        <li>
+          {%- if ref.url %}<a href="{{ ref.url }}">{{ ref.name }}</a>{% else %}{{ ref.name }}{% endif -%}
+          {%- if ref.affiliation %}<span class="reference-list__affiliation">{{ ref.affiliation }}</span>{% endif -%}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if jm.placement_officer and jm.placement_officer.name %}
+  <p>
+    <strong>Placement officer:</strong>
+    {% if jm.placement_officer.url %}
+      <a href="{{ jm.placement_officer.url }}">{{ jm.placement_officer.name }}</a>
+    {% else %}
+      {{ jm.placement_officer.name }}
+    {% endif %}
+  </p>
+{% endif %}
+
+{% if site.author.email %}
+  <p>
+    Feel free to get in touch:
+    <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+  </p>
+{% endif %}

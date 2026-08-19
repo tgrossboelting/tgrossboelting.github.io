@@ -1,0 +1,39 @@
+# Job-market details rendered by _includes/job-market.html on the homepage.
+#
+# Every key is optional -- anything commented out or left blank renders nothing
+# at all, no empty heading and no dangling label.
+#
+# The contact line is driven by `author.email` in _config.yml, so the address
+# lives in exactly one place and is not repeated here.
+
+# --- References -------------------------------------------------------------
+# Taken from the References section of the CV source, which stays the master
+# copy: C:\website\CV\CV_Tobias_Grossboelting.tex
+#
+# Email addresses are deliberately NOT repeated here. They are in the CV PDF
+# for anyone who needs them, and putting third-party addresses in page source
+# invites scraping. This matches how comparable job-market pages do it.
+references:
+  - name:        "Christoph Rothe"
+    url:         "http://www.christophrothe.net/"
+    affiliation: "University of Mannheim"
+
+  - name:        "Paul Goldsmith-Pinkham"
+    url:         "https://paulgp.com/"
+    affiliation: "Yale School of Management"
+
+  - name:        "Soonwoo Kwon"
+    url:         "https://soonwookwon.github.io/"
+    affiliation: "Brown University"
+
+# --- Placement officer ------------------------------------------------------
+# Not listed on the CV. Fill in when known and it appears automatically.
+#
+# placement_officer:
+#   name: ""
+#   url:  ""
+
+# --- Job market status ------------------------------------------------------
+# Optional override. Left blank, the sentence already in about.md does the job.
+#
+# status: "I am on the 2026/2027 job market."
