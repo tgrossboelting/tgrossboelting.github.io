@@ -30,10 +30,17 @@
 
   Either half can go missing: with no status the block starts at the
   invitation, with no email it is just the status.
+
+  The status is set in <strong>, the invitation and address are not. It is the
+  one line a visitor should catch without reading the page, and the only bold
+  text in the prose, so the emphasis still means something -- the "References"
+  and "Placement officer" labels below are bold as labels, not as stress. The
+  markup lives here rather than in jobmarket.yml so that file stays plain
+  content.
 {% endcomment %}
 {% if jm.status or site.author.email %}
   <p>
-    {%- if jm.status %}{{ jm.status }}<br />{% endif -%}
+    {%- if jm.status %}<strong>{{ jm.status }}</strong><br />{% endif -%}
     {%- if site.author.email %}Feel free to get in touch!
     <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>{% endif -%}
   </p>
