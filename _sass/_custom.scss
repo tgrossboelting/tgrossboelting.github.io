@@ -272,10 +272,13 @@ html[data-theme="dark"] {
    38em text measure so it reads as a page-level divider, not a paragraph rule.
    -------------------------------------------------------------------------- */
 .section-break {
+  /* No rule, just air. The <hr> is kept because it is a genuine thematic break
+     between the introduction and the paper, and it stays in the document for
+     screen readers -- but the "Job Market Paper" heading already carries its
+     own border-bottom, so a second line above it read as clutter. */
   max-width: none;
-  margin: 2.25em 0 1.75em;
+  margin: 1.5em 0 1.25em;
   border: 0;
-  border-top: 1px solid var(--global-border-color);
 }
 
 /* --------------------------------------------------------------------------
