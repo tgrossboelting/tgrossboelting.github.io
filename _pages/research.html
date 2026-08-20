@@ -11,10 +11,6 @@ author_profile: true
 
 {% include base_path %}
 
-{% include page-figure.html
-     src="GroßböltingTobiasYale.jpg"
-     alt="Tobias Großbölting (Tobias Grossboelting) presenting research on honest confidence intervals in regression discontinuity designs at Yale University" %}
-
 <div class="research-list">
 <!-- New style rendering if publication categories are defined -->
 {% if site.publication_category %}
@@ -41,6 +37,15 @@ author_profile: true
   {% endfor %}
 {% endif %}
 </div>
+
+{% comment %}
+  Photo sits below the papers, not above them: the page's job is the work, and
+  a picture at the top competed with the headshot in the sidebar for the same
+  attention. Down here it closes the page instead of introducing it.
+{% endcomment %}
+{% include page-figure.html
+     src="GroßböltingTobiasYale.jpg"
+     alt="Tobias Großbölting (Tobias Grossboelting) presenting research on honest confidence intervals in regression discontinuity designs at Yale University" %}
 
 
 

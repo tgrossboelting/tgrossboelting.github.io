@@ -191,11 +191,12 @@ html[data-theme="dark"] {
   /* Cap the width rather than filling the column. At full column width the
      Yale photo rendered 888px against a 1006px source -- 88% of native, so it
      both dominated the page and showed every bit of the original softness.
-     26rem lands near half native, which reads sharp.
+     20rem is well under half native, which reads sharp and keeps a photo
+     subordinate to the text it sits beside.
 
      This is the one number to change to resize page figures. It scales with
      the root font, so it steps up with everything else on wide monitors. */
-  max-width: 26rem;
+  max-width: 20rem;
   margin: 2em 0;
 
   img {
