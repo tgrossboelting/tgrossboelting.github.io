@@ -1,6 +1,6 @@
 {% comment %}
-  Job-market block for the homepage: references, placement officer, and an
-  explicit invitation to get in touch.
+  Job-market block for the homepage: an explicit invitation to get in touch,
+  then references and placement officer.
 
   Data comes from _data/jobmarket.yml, except the email address, which is read
   from `author.email` in _config.yml so it is defined in exactly one place.
@@ -15,6 +15,18 @@
 
 {% if jm.status %}
   <p><strong>{{ jm.status }}</strong></p>
+{% endif %}
+
+{% comment %}
+  Contact comes first, directly under the job-market sentence in about.md, so
+  the address is the next thing read rather than sitting below the reference
+  list. References follow as supporting detail.
+{% endcomment %}
+{% if site.author.email %}
+  <p>
+    Feel free to get in touch:
+    <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+  </p>
 {% endif %}
 
 {% if jm.references and jm.references.size > 0 %}
@@ -44,12 +56,5 @@
     {% else %}
       {{ jm.placement_officer.name }}
     {% endif %}
-  </p>
-{% endif %}
-
-{% if site.author.email %}
-  <p>
-    Feel free to get in touch:
-    <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
   </p>
 {% endif %}
