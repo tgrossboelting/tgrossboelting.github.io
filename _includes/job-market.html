@@ -14,27 +14,27 @@
 {% assign jm = site.data.jobmarket %}
 
 {% comment %}
-  Status and invitation on one line, then the address on its own line beneath.
-  Both sentences close on a full stop and the address stands clear of them, so
-  no preposition or colon has to carry it -- a trailing "get in touch at
+  Three stacked lines:
+
+    I am on the 2026/2027 job market.
+    Feel free to get in touch!
+    tgrossbo@mail.uni-mannheim.de
+
+  Each closes cleanly and the address stands on its own, so nothing has to
+  carry it grammatically -- a colon read as a label, and "get in touch at
   <address>" elides the "with me" the phrase normally takes.
 
-  The <br> here is deliberate and correct: the address is a continuation of the
-  invitation, not a new paragraph, so it wants a line break rather than
-  paragraph spacing. This is not the <br>-as-fake-paragraph pattern removed
-  from about.md.
+  The <br> tags are deliberate: these are one contact block, not three
+  paragraphs, so they want line breaks rather than paragraph spacing. This is
+  not the <br>-as-fake-paragraph pattern removed from about.md.
 
-  Either half can go missing: with no status the line is just the invitation,
-  with no email just the status.
-
-  The space between the two sentences is the literal one after `%}` below. It
-  must NOT be written as a separate {% raw %}{% if %} {% endif %}{% endraw %} with a trailing `-%}`,
-  because that strip marker eats it and renders "...job market.Feel free...".
+  Either half can go missing: with no status the block starts at the
+  invitation, with no email it is just the status.
 {% endcomment %}
 {% if jm.status or site.author.email %}
   <p>
-    {%- if jm.status %}{{ jm.status }}{% endif %}
-    {%- if site.author.email %} Feel free to get in touch.<br />
+    {%- if jm.status %}{{ jm.status }}<br />{% endif -%}
+    {%- if site.author.email %}Feel free to get in touch!
     <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>{% endif -%}
   </p>
 {% endif %}

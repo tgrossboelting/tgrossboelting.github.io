@@ -1,6 +1,13 @@
 {% include base_path %}
 
+{% comment %}
+  The "Powered by Jekyll & AcademicPages, a fork of Minimal Mistakes" credit
+  was removed from the rendered footer. The themes are MIT licensed, which
+  requires the copyright notice to be retained in the source -- LICENSE is
+  still in the repository root, so that obligation is met. MIT does not
+  require attribution on the rendered page.
+{% endcomment %}
 <div class="page__footer-copyright">
-  &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}, {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
+  &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}<br />
   Site last updated {{ "now" | date: '%Y-%m-%d' }}
 </div>

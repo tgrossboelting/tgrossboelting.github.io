@@ -39,3 +39,16 @@ $caption-font-family : $sans-serif;
    scales with the root font steps at 1600px and 2200px.
    -------------------------------------------------------------------------- */
 $content-max-width : 66em;
+
+/* --------------------------------------------------------------------------
+   SIDEBAR WIDTH
+
+   The sidebar column and the avatar are the same width by definition, so the
+   image fills its column exactly and the name below it starts and ends on the
+   same edges. Previously the column was a 1fr share (342px) while the avatar
+   capped at 280px, leaving 61px of empty column that pushed the text right and
+   made the picture look like it overhung the name beneath it.
+
+   Change this one value to resize the picture and the column together.
+   -------------------------------------------------------------------------- */
+$sidebar-width : 14rem;

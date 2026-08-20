@@ -98,7 +98,10 @@
 @include breakpoint($large) {
   #main {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
+    /* Sidebar sized to the avatar rather than taking an fr share, so no empty
+       column is left beside the picture. minmax(0, ...) so it still shrinks
+       rather than overflowing on the narrowest two-column viewports. */
+    grid-template-columns: minmax(0, $sidebar-width) minmax(0, 1fr);
     column-gap: 2.5em;
     align-items: start;
 
@@ -136,7 +139,11 @@
    with html{font-size} at 1600px and 2200px. */
 .author__avatar img {
   @include breakpoint($large) {
-    max-width: 15.5rem;
+    /* Same value as the grid column, so the image fills the sidebar exactly
+       and the name below lines up with its edges. rem, not em: sidebar.scss
+       sets .author__avatar { font-size: 0 } at $large, and em would resolve
+       against that zero and collapse the image entirely. */
+    max-width: $sidebar-width;
   }
 
   /* The framing now lives in the file, not here: grossboelting-headshot.jpg is
@@ -204,6 +211,27 @@ html[data-theme="dark"] {
     font-style: italic;
     color: var(--global-text-color-light);
   }
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER
+
+   The footer carries only the copyright and the last-updated date now, so it
+   should recede. The theme sets $type-size-7 (0.6875em), which is em-based and
+   therefore steps up with the root font on wide monitors -- about 14px at the
+   20px step, larger than footer text wants to be.
+
+   rem does NOT help here: it resolves against the root font, which is exactly
+   what the LARGE-SCREEN SCALING block above steps up, so 0.6875rem computed to
+   the same 13.75px. A plain rem or em value cannot decouple from those steps.
+
+   max() pins a floor instead. 0.55rem alone would fall to 8.8px at the 16px
+   root used on phones; the 11px floor keeps it legible there while still
+   letting the footer grow a little on very large monitors.
+   -------------------------------------------------------------------------- */
+.page__footer-copyright {
+  font-size: max(11px, 0.55rem);
+  line-height: 1.6;
 }
 
 /* --------------------------------------------------------------------------

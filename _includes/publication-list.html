@@ -33,9 +33,12 @@
 {%- else -%}
 {%- assign list_heading = site.publication_category[include.category].title -%}
 {%- endif -%}
+{%- comment -%}
+  No <hr /> after the heading: layout/base.scss already gives h2 a
+  border-bottom, so adding a rule here drew two lines under the title.
+{%- endcomment -%}
 {%- if list_heading %}
 <h2>{{ list_heading }}</h2>
-<hr />
 {% endif %}
 <div class="research-list">
 {%- for post in pubs reversed %}
