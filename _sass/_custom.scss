@@ -118,7 +118,11 @@ html {
        column is left beside the picture. minmax(0, ...) so it still shrinks
        rather than overflowing on the narrowest two-column viewports. */
     grid-template-columns: minmax(0, $sidebar-width) minmax(0, 1fr);
-    column-gap: 2.5em;
+    /* 2.5em was wider than the gutter needs to be once the sidebar stopped
+       carrying empty space beside the avatar. Narrowing it also moves the text
+       left, since the content column takes whatever the sidebar and gutter
+       leave. em, so the gutter scales with the root font steps. */
+    column-gap: 1.75em;
     align-items: start;
 
     /* @include clearfix on #main (layout/page.scss) emits an ::after pseudo-
