@@ -139,17 +139,19 @@
     max-width: 15.5rem;
   }
 
-  /* The headshot file is a wide landscape frame (2048x1365) with a lot of door
-     behind the subject, so shown at its native ratio the face ends up small.
-     Crop to a portrait box in CSS rather than editing the file, so the original
-     stays intact and the framing is one number to tune.
+  /* The framing now lives in the file, not here: grossboelting-headshot.jpg is
+     cropped to 4:5 from the 2048x1365 original, centred on the subject.
 
-     object-position Y is above centre because the face sits in the upper half;
-     raise it towards 0% to show more forehead, lower towards 100% for more
-     shoulder. */
+     CSS could only ever crop the width. The source was 3:2 in a 4:5 box, so
+     cover scaled it to fill the height and the vertical object-position had
+     nothing to act on -- taking anything off the top required cropping the
+     file. See the crop rectangle recorded in the commit that added it.
+
+     These three lines are kept as a guard: if a differently-shaped photo is
+     dropped in later, it still fills the box instead of distorting. */
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: 50% 28%;
+  object-position: 50% 50%;
 }
 
 /* --------------------------------------------------------------------------
