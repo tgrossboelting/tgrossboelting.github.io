@@ -43,6 +43,22 @@
    against the html font-size set here, so the theme's existing em breakpoints
    are unaffected by these steps.
    -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   STABLE SCROLLBAR GUTTER
+
+   The layout is centred, so its position depends on how wide the viewport is.
+   A page long enough to scroll loses ~15px to the scrollbar and shifts left by
+   half that; a short page does not. Moving between the homepage (scrolls) and
+   the research page (does not) therefore jogged the avatar and the text 7px
+   sideways, which reads as the pages being laid out differently.
+
+   scrollbar-gutter reserves the space on every page, scrolling or not, so the
+   two line up exactly. Browsers without support simply behave as before.
+   -------------------------------------------------------------------------- */
+html {
+  scrollbar-gutter: stable;
+}
+
 @media screen and (min-width: 1600px) {
   html { font-size: 20px; }
 }
