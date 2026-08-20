@@ -12,7 +12,7 @@ My research interests are in Econometrics and Causal Inference. Currently, I am 
 \
 I am on the 2026/2027 job market.
 
-You can download my [CV]({{ site.baseurl }}/files/CV_Tobias_Grossboelting.pdf) (PDF).
+You can find my CV [here]({{ site.baseurl }}/files/CV_Tobias_Grossboelting.pdf).
 
 {% include job-market.html %}
 
