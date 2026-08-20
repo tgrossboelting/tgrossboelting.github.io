@@ -9,6 +9,19 @@ date: 2026-01-26
 # venue: 'Journal 1'
 citation: 'Großbölting, Tobias. (2026). &quot;Heterogeneous Groups and Covariate Adjustment in Regression Discontinuity Designs.&quot; <i>Working Paper</i>.'
 ---
+{% comment %}
+ABSTRACT WITHHELD -- the results below are outdated and should not be read by
+anyone. Wrapped in a Liquid comment rather than deleted, so the text survives
+in version control while rendering nowhere: not on the research list, not on
+the homepage, and not on this paper's own page.
+
+Because Liquid strips this before the body reaches the template, post.content
+is empty, so archive-single.html drops the "Show abstract" fold on its own --
+no show_abstract: false needed.
+
+To publish a corrected abstract, replace the text inside this comment and
+delete the {% raw %}{% comment %}{% endraw %} / {% raw %}{% endcomment %}{% endraw %} wrapper.
+
 Abstract: I study covariate adjustment in regression discontinuity designs with discrete covariates,
 such as education level, occupation, or gender, that partition the sample into subgroups with
 heterogeneous regression functions. The standard local-polynomial RD estimator pools observations
@@ -23,4 +36,5 @@ and worst-case bias than the local-polynomial estimator, over a common smoothnes
 improvements yield shorter honest confidence intervals for the same target parameter. A placebo
 exercise using data from the Current Population Survey shows reductions in MSE of 8% to
 33% and honest confidence intervals that are 6% to 16% shorter depending on sample sizes and
-bandwidths. 
+bandwidths.
+{% endcomment %}
