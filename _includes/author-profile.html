@@ -21,7 +21,13 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
+    {%- comment -%}
+      Shown only below $large, where it toggles the list below. The
+      AcademicPages default label was "Follow", which suggests a social feed;
+      the list is location, employer, email and GitHub, so "Contact" is what a
+      visitor is actually looking for.
+    {%- endcomment -%}
+    <button class="btn btn--inverse">Contact</button>
     <ul class="author__urls social-icons">
       <!-- Font Awesome icons / Biographic information  -->
       {% if author.location %}
