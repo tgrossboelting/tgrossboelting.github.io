@@ -39,13 +39,17 @@ author_profile: true
 </div>
 
 {% comment %}
-  Photo sits below the papers, not above them: the page's job is the work, and
-  a picture at the top competed with the headshot in the sidebar for the same
-  attention. Down here it closes the page instead of introducing it.
+  No photo on this page in this variant. The sidebar headshot is the only
+  picture of me on the site, and the page is left to the work.
+
+  The page-figure include is still available: when a paper has a result figure
+  worth showing, that is what belongs beside it.
+
+    {% raw %}{% include page-figure.html src="..." alt="..." %}{% endraw %}
+
+  The variant/talk-photo branch carries the other arrangement -- sidebar off
+  here, and the Yale talk photo full width under the job market paper.
 {% endcomment %}
-{% include page-figure.html
-     src="GroßböltingTobiasYale.jpg"
-     alt="Tobias Großbölting (Tobias Grossboelting) presenting research on honest confidence intervals in regression discontinuity designs at Yale University" %}
 
 
 
