@@ -205,6 +205,21 @@ html[data-theme="dark"] {
 }
 
 /* --------------------------------------------------------------------------
+   SECTION BREAK
+
+   Divides the homepage into its two parts: the introduction, then the job
+   market paper. The generous margin does the separating -- the rule is only
+   there to make the join deliberate rather than accidental. Wider than the
+   38em text measure so it reads as a page-level divider, not a paragraph rule.
+   -------------------------------------------------------------------------- */
+.section-break {
+  max-width: none;
+  margin: 3.5em 0 3em;
+  border: 0;
+  border-top: 1px solid var(--global-border-color);
+}
+
+/* --------------------------------------------------------------------------
    RESEARCH LIST  (_includes/archive-single.html)
 
    Spacing and the collapsed-abstract disclosure. Each paper is a block with
