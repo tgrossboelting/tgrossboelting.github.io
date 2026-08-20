@@ -13,19 +13,23 @@
 {% endcomment %}
 {% assign jm = site.data.jobmarket %}
 
-{% if jm.status %}
-  <p><strong>{{ jm.status }}</strong></p>
-{% endif %}
-
 {% comment %}
-  Contact comes first, directly under the job-market sentence in about.md, so
-  the address is the next thing read rather than sitting below the reference
-  list. References follow as supporting detail.
+  Status and invitation share one line, with the address in parentheses. The
+  parenthetical avoids needing a preposition before the address at all, which
+  a colon or a trailing "at" both handled awkwardly.
+
+  Either half can go missing: with no status the line is just the invitation,
+  with no email just the status.
+
+  The space between the two sentences is the literal one after `%}` on the
+  second line below. It must NOT be written as a separate {% raw %}{% if %} {% endif %}{% endraw %}
+  with a trailing `-%}`, because that strip marker eats it and the output runs
+  together as "...job market.Feel free...".
 {% endcomment %}
-{% if site.author.email %}
+{% if jm.status or site.author.email %}
   <p>
-    Feel free to get in touch:
-    <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+    {%- if jm.status %}{{ jm.status }}{% endif %}
+    {%- if site.author.email %} Feel free to get in touch (<a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>).{% endif -%}
   </p>
 {% endif %}
 
