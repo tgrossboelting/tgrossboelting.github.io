@@ -82,10 +82,18 @@ html {
 
    $content-max-width is defined in _custom_variables.scss -- change it there,
    not here, and both stay in step.
+
+   Applied from $large (925px) up, NOT from $x-large (1280px). The theme gates
+   its own cap behind $x-large, which meant editing $content-max-width did
+   nothing whatsoever on a window narrower than 1280px -- #main silently fell
+   back to the 925px that @include container sets, and the variable looked
+   broken. Between 925px and 1280px the layout is now bounded by the viewport
+   rather than pinned at 925px; the text measure still caps paragraphs at 38em,
+   so line length does not suffer.
    -------------------------------------------------------------------------- */
 #main,
 .masthead__inner-wrap {
-  @include breakpoint($x-large) {
+  @include breakpoint($large) {
     max-width: $content-max-width;
   }
 }
