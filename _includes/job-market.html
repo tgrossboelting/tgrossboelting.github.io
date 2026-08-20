@@ -14,22 +14,28 @@
 {% assign jm = site.data.jobmarket %}
 
 {% comment %}
-  Status and invitation share one line, with the address in parentheses. The
-  parenthetical avoids needing a preposition before the address at all, which
-  a colon or a trailing "at" both handled awkwardly.
+  Status and invitation on one line, then the address on its own line beneath.
+  Both sentences close on a full stop and the address stands clear of them, so
+  no preposition or colon has to carry it -- a trailing "get in touch at
+  <address>" elides the "with me" the phrase normally takes.
+
+  The <br> here is deliberate and correct: the address is a continuation of the
+  invitation, not a new paragraph, so it wants a line break rather than
+  paragraph spacing. This is not the <br>-as-fake-paragraph pattern removed
+  from about.md.
 
   Either half can go missing: with no status the line is just the invitation,
   with no email just the status.
 
-  The space between the two sentences is the literal one after `%}` on the
-  second line below. It must NOT be written as a separate {% raw %}{% if %} {% endif %}{% endraw %}
-  with a trailing `-%}`, because that strip marker eats it and the output runs
-  together as "...job market.Feel free...".
+  The space between the two sentences is the literal one after `%}` below. It
+  must NOT be written as a separate {% raw %}{% if %} {% endif %}{% endraw %} with a trailing `-%}`,
+  because that strip marker eats it and renders "...job market.Feel free...".
 {% endcomment %}
 {% if jm.status or site.author.email %}
   <p>
     {%- if jm.status %}{{ jm.status }}{% endif %}
-    {%- if site.author.email %} Feel free to get in touch (<a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>).{% endif -%}
+    {%- if site.author.email %} Feel free to get in touch.<br />
+    <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>{% endif -%}
   </p>
 {% endif %}
 
