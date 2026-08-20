@@ -6,13 +6,18 @@ redirect_from:
   - /about.html
 ---
 
-I am a fifth-year Ph.D. candidate at the University of Mannheim, supervised by [Christoph Rothe](http://www.christophrothe.net/) and [Paul Goldsmith-Pinkham](https://paulgp.com/).\
-\
-My research interests are in Econometrics and Causal Inference. Currently, I am working on heterogeneity in Regression Discontinuity Designs and its implications for estimation and inference.\
-\
-I am on the 2026/2027 job market.
+{% comment %}
+  Real paragraphs, separated by blank lines. These were previously one single
+  paragraph with trailing backslashes, which kramdown turns into hard <br>
+  breaks: that suppressed normal paragraph spacing and pinned the line breaks,
+  so the block sat differently from every other paragraph on the page.
+  Do not reintroduce the trailing "\".
+{% endcomment %}
+I am a Ph.D. candidate at the University of Mannheim, supervised by [Christoph Rothe](http://www.christophrothe.net/) and [Paul Goldsmith-Pinkham](https://paulgp.com/). You can find my CV [here]({{ site.baseurl }}/files/CV_Tobias_Grossboelting.pdf).
 
-You can find my CV [here]({{ site.baseurl }}/files/CV_Tobias_Grossboelting.pdf).
+My research interests are in Econometrics and Causal Inference. Currently, I am working on heterogeneity in Regression Discontinuity Designs and its implications for estimation and inference.
+
+I am on the 2026/2027 job market.
 
 {% include job-market.html %}
 
