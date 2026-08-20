@@ -51,16 +51,26 @@
   html { font-size: 22px; }
 }
 
-#main {
+/* --------------------------------------------------------------------------
+   CONTENT WIDTH
+
+   #main was 80em. The text measure caps at 38em (see MEASURE above), so the
+   content column ran ~55em wide with ~17em of it permanently empty, which is
+   what made the text look stranded far from the avatar on wide monitors.
+
+   The masthead is capped here too. The theme sets it separately in
+   layout/masthead.scss ($x-large, 1280px), so narrowing only #main left the
+   nav bar on a different grid: the brand name started 46px to the left of the
+   avatar directly below it. Both already use 1em horizontal padding, so with a
+   shared cap their text edges line up exactly.
+
+   $content-max-width is defined in _custom_variables.scss -- change it there,
+   not here, and both stay in step.
+   -------------------------------------------------------------------------- */
+#main,
+.masthead__inner-wrap {
   @include breakpoint($x-large) {
-    /* Was 80em. The text measure caps at 38em (see MEASURE above), so at 80em
-       the content column ran ~55em wide with ~17em of it permanently empty --
-       which is what made the text look stranded far from the avatar on wide
-       monitors. 66em sizes the pair so the content column lands near the
-       measure: full-width elements (tables, figures, the publication list)
-       still get ~46em, but the dead gutter is gone. Tune this one number to
-       move the text left or right; nothing else depends on it. */
-    max-width: 66em;
+    max-width: $content-max-width;
   }
 }
 

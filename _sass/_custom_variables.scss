@@ -26,3 +26,16 @@ $palatino: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Geo
 $global-font-family  : $sans-serif;
 $header-font-family  : $sans-serif;
 $caption-font-family : $sans-serif;
+
+/* --------------------------------------------------------------------------
+   CONTENT WIDTH
+
+   The single width every full-width element is capped at, so the masthead and
+   the page body sit on one grid. The theme instead hard-codes $x-large (1280px)
+   into .masthead__inner-wrap and #main separately, which is how the nav bar
+   ended up 46px out of step with the avatar below it when one was changed.
+
+   Change this one value to make the whole site wider or narrower. In em, so it
+   scales with the root font steps at 1600px and 2200px.
+   -------------------------------------------------------------------------- */
+$content-max-width : 66em;
