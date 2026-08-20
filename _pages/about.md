@@ -14,4 +14,18 @@ I am on the 2026/2027 job market.
 
 You can download my [CV]({{ site.baseurl }}/files/CV_Tobias_Grossboelting.pdf) (PDF).
 
+{% comment %}
+  Only the job market paper is surfaced here, deliberately. The full list
+  lives on /research/ and stays the single place papers are catalogued.
+
+  This keeps the homepage a fixed length as the paper count grows: with every
+  category shown, eight papers would push the references and contact details
+  below the fold on the page that matters most during the market.
+
+  Nothing is duplicated -- this reads the same _publications collection and
+  the same archive-single.html include the research page uses. Swap the
+  category, or add a second call, if that judgement ever changes.
+{% endcomment %}
+{% include publication-list.html category="jmp" %}
+
 {% include job-market.html %}

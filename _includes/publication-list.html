@@ -1,0 +1,45 @@
+{% comment %}
+  Renders one category from the _publications collection.
+
+  Reads the same collection and the same archive-single.html include the
+  research page uses, so a paper is written once and appears wherever it is
+  called -- there is no second copy to keep in sync.
+
+  Usage:
+
+    {% include publication-list.html category="jmp" %}
+    {% include publication-list.html category="working" heading="Selected Work" %}
+    {% include publication-list.html category="jmp" heading=false %}
+
+  category  key from `publication_category` in _config.yml
+            (jmp, working, books, manuscripts, conferences, wip)
+  heading   optional. Defaults to the title set for that category in
+            _config.yml. Pass false to render the list with no heading.
+
+  Renders nothing at all when the category holds no papers, so calling it for
+  a category you have not written yet is harmless.
+
+  NOTE ON INDENTATION: the HTML below deliberately starts at column zero.
+  This include is called from about.md, and kramdown reads indented lines in a
+  Markdown document as a code block -- indent the <h2> and the heading renders
+  as literal source on the page instead.
+{% endcomment %}
+{%- assign pubs = site.publications | where: "category", include.category -%}
+{%- if pubs.size > 0 -%}
+{%- if include.heading == false -%}
+{%- assign list_heading = nil -%}
+{%- elsif include.heading -%}
+{%- assign list_heading = include.heading -%}
+{%- else -%}
+{%- assign list_heading = site.publication_category[include.category].title -%}
+{%- endif -%}
+{%- if list_heading %}
+<h2>{{ list_heading }}</h2>
+<hr />
+{% endif %}
+<div class="research-list">
+{%- for post in pubs reversed %}
+{% include archive-single.html %}
+{%- endfor %}
+</div>
+{%- endif -%}
