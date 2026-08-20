@@ -169,6 +169,14 @@ html[data-theme="dark"] {
    free to use the whole content column.
    -------------------------------------------------------------------------- */
 .page-figure {
+  /* Cap the width rather than filling the column. At full column width the
+     Yale photo rendered 888px against a 1006px source -- 88% of native, so it
+     both dominated the page and showed every bit of the original softness.
+     26rem lands near half native, which reads sharp.
+
+     This is the one number to change to resize page figures. It scales with
+     the root font, so it steps up with everything else on wide monitors. */
+  max-width: 26rem;
   margin: 2em 0;
 
   img {
