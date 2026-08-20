@@ -36,9 +36,23 @@ $caption-font-family : $sans-serif;
    ended up 46px out of step with the avatar below it when one was changed.
 
    Change this one value to make the whole site wider or narrower. In em, so it
-   scales with the root font steps at 1600px and 2200px.
+   holds the same proportions at every root font step -- one edit moves phone,
+   laptop and desktop together instead of fixing one size and breaking another.
+
+   The content column, not the 38em measure cap, is what now binds line length,
+   so this value sets characters per line directly. At the 18px root:
+
+       54em ~ 76 chars      50em ~ 68 chars      46em ~ 60 chars
+       52em ~ 72 chars      48em ~ 63 chars      44em ~ 56 chars
+
+   Comfortable reading is 45-75 characters, ideal around 66. Below roughly 44em
+   lines turn choppy; above 54em they run long.
+
+   Tablet portrait (~768px) is the one size this does not reach: there is no
+   sidebar and #main is bounded by the viewport rather than by this cap, so it
+   sits near 76 characters regardless.
    -------------------------------------------------------------------------- */
-$content-max-width : 66em;
+$content-max-width : 50em;
 
 /* --------------------------------------------------------------------------
    SIDEBAR WIDTH
@@ -51,4 +65,4 @@ $content-max-width : 66em;
 
    Change this one value to resize the picture and the column together.
    -------------------------------------------------------------------------- */
-$sidebar-width : 11.9rem;
+$sidebar-width : 12.5rem;
