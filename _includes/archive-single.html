@@ -26,8 +26,27 @@
       </div>
     {% endif %}
 
+    {%- comment -%}
+      Papers have no page of their own -- `publications` is output: false in
+      _config.yml -- so the title links straight to the PDF, the same way the
+      CV entry in the header links to files/CV_Tobias_Grossboelting.pdf.
+
+      With no paperurl yet the title renders as plain text. That is deliberate:
+      linking to post.url would point at a page that is no longer built.
+      Nothing else is needed when the PDF appears -- add paperurl to the
+      paper's front matter and the title becomes a link.
+
+      Other collections keep the original behaviour, since they still have
+      pages of their own.
+    {%- endcomment -%}
     <h2 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
+      {% if post.collection == 'publications' %}
+        {% if post.paperurl %}
+          <a href="{% unless post.paperurl contains '://' %}{{ base_path }}{% endunless %}{{ post.paperurl }}">{{ title }}</a>
+        {% else %}
+          {{ title }}
+        {% endif %}
+      {% elsif post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
         <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
@@ -125,9 +144,13 @@
         <p class="archive__item-meta"><strong>Presentations:</strong> {{ post.presentations }}</p>
       {% endif %}
 
-      {% if post.paperurl or post.slidesurl or post.bibtexurl or post.codeurl %}
+      {%- comment -%}
+        No "Paper" link here: the title above already opens the PDF, and two
+        links to the same file inches apart read as two different files. The
+        row is for everything else that belongs to the paper.
+      {%- endcomment -%}
+      {% if post.slidesurl or post.bibtexurl or post.codeurl %}
         <p class="archive__item-links">
-          {% if post.paperurl %}<a href="{% unless post.paperurl contains '://' %}{{ base_path }}{% endunless %}{{ post.paperurl }}">Paper</a>{% endif %}
           {% if post.slidesurl %}<a href="{% unless post.slidesurl contains '://' %}{{ base_path }}{% endunless %}{{ post.slidesurl }}">Slides</a>{% endif %}
           {% if post.bibtexurl %}<a href="{% unless post.bibtexurl contains '://' %}{{ base_path }}{% endunless %}{{ post.bibtexurl }}">BibTeX</a>{% endif %}
           {% if post.codeurl %}<a href="{% unless post.codeurl contains '://' %}{{ base_path }}{% endunless %}{{ post.codeurl }}">Code</a>{% endif %}

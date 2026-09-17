@@ -232,7 +232,13 @@ collections:
     output: true
     permalink: /:collection/:path/
   publications:
-    output: true
+    # No page of its own per paper: the title on /research/ links straight to
+    # the PDF, the way the CV link in the header does. The documents are still
+    # read by Liquid, so /research/ and the homepage are unaffected -- only the
+    # per-paper subpages stop being written. Flip back to true (and restore the
+    # title link in _includes/archive-single.html) if a paper ever needs a
+    # landing page of its own.
+    output: false
     permalink: /:collection/:path/
   portfolio:
     output: true
