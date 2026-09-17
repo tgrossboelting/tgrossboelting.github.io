@@ -333,6 +333,14 @@ html[data-theme="dark"] {
   margin-bottom: 2.5em;
 }
 
+/* Section labels ("Job Market Paper", "Work in Progress") sit above the paper
+   titles and should outrank them. They are set larger than the titles, and
+   keep the black weight and the full-width rule the titles do not have, so
+   the two never read as the same level. */
+.research-section {
+  font-size: 1.4em;
+}
+
 /* Paper titles.
 
    Bigger than the section heading above them ("Job Market Paper", h2 at
@@ -344,7 +352,7 @@ html[data-theme="dark"] {
    deliberate: the title is what a reader reaches for, the label is what tells
    them what they get. */
 .research-list .archive__item-title {
-  font-size: 1.5em;
+  font-size: 1.3em;
 
   /* The colour is on the heading, not on the link inside it, so a paper reads
      the same whether or not its PDF is up yet. Papers arriving without a
