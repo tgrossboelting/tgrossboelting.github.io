@@ -1,8 +1,6 @@
 ---
 title: "Composition Bias and Covariate Adjustment in Regression Discontinuity Designs"
 collection: publications
-paperurl: /files/CV_Tobias_Grossboelting.pdf
-slidesurl: /files/CV_Tobias_Grossboelting.pdf
 category: jmp
 permalink: /2026_01_26_heterogeneous_groups_in_RDDs
 excerpt: 'In this paper, I study covariate adjustment in regression discontinuity designs estimated with
