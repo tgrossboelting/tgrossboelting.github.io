@@ -346,8 +346,17 @@ html[data-theme="dark"] {
 .research-list .archive__item-title {
   font-size: 1.5em;
 
+  /* The colour is on the heading, not on the link inside it, so a paper reads
+     the same whether or not its PDF is up yet. Papers arriving without a
+     paperurl would otherwise sit in plain heading black next to linked ones,
+     and the list would look half-finished rather than consistent.
+
+     The hover underline stays suppressed for a title that is not a link (see
+     below), so blue here is a visual accent, not a promise of a click. */
+  color: var(--global-link-color);
+
   a {
-    color: var(--global-link-color);
+    color: inherit;
 
     &:hover {
       color: var(--global-link-color-hover);
