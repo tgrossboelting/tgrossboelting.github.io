@@ -15,7 +15,23 @@
   </div>
 
   <div class="author__content">
+    {%- comment -%}
+      h1 on the homepage, h3 everywhere else.
+
+      The homepage has no other heading to be its h1 -- the prose starts
+      straight at "I am a Ph.D. candidate" -- so without this it is the one
+      page on the site with no h1 at all, and the name it should be ranking
+      for appears only in <title> and the JSON-LD. /research/ and /cv/ have
+      headings of their own, and the sidebar must not outrank them.
+
+      Nothing moves: _sass/layout/_sidebar.scss:197 sets an explicit
+      font-size on .sidebar .author__name, so the level is structure only.
+    {%- endcomment -%}
+    {% if page.url == '/' %}
+    <h1 class="author__name">{{ author.name }}</h1>
+    {% else %}
     <h3 class="author__name">{{ author.name }}</h3>
+    {% endif %}
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
   </div>
