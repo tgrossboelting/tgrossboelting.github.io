@@ -1,5 +1,5 @@
 ---
-title: "Heterogeneous Groups and Covariate Adjustment in Regression Discontinuity Designs"
+title: "Composition Bias and Covariate Adjustment in Regression Discontinuity Designs"
 collection: publications
 category: jmp
 permalink: /2026_01_26_heterogeneous_groups_in_RDDs
@@ -7,7 +7,7 @@ excerpt: 'In this paper, I study covariate adjustment in regression discontinuit
 data from potentially heterogeneous groups.'
 date: 2026-01-26
 # venue: 'Journal 1'
-citation: 'Großbölting, Tobias. (2026). &quot;Heterogeneous Groups and Covariate Adjustment in Regression Discontinuity Designs.&quot; <i>Working Paper</i>.'
+citation: 'Großbölting, Tobias. (2026). &quot;Composition Bias and Covariate Adjustment in Regression Discontinuity Designs.&quot; <i>Working Paper</i>.'
 ---
 {% comment %}
 ABSTRACT WITHHELD -- the results below are outdated and should not be read by
