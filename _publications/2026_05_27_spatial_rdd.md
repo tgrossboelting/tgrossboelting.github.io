@@ -1,6 +1,7 @@
 ---
 title: "Spatial Regression Discontinuity Designs"
 collection: publications
+paperurl: /files/CV_Tobias_Grossboelting.pdf
 category: wip
 permalink: /2026_05_27_spatial_rdd
 excerpt: ''
