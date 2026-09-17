@@ -333,6 +333,37 @@ html[data-theme="dark"] {
   margin-bottom: 2.5em;
 }
 
+/* Paper titles.
+
+   Bigger than the section heading above them ("Job Market Paper", h2 at
+   1.25em): the heading is a label, the titles are the content, and at equal
+   size the list read flat. Set in em so it tracks the surrounding type.
+
+   Blue and underlined on hover, because the title is a link to the PDF -- the
+   same link the "Paper" label below repeats. Two routes to one file is
+   deliberate: the title is what a reader reaches for, the label is what tells
+   them what they get. */
+.research-list .archive__item-title {
+  font-size: 1.5em;
+
+  a {
+    color: var(--global-link-color);
+
+    &:hover {
+      color: var(--global-link-color-hover);
+      text-decoration: underline;
+    }
+  }
+}
+
+/* The theme underlines the title whenever the pointer is anywhere in the
+   item, whether or not the title is a link (_sass/layout/_archive.scss:76).
+   On a paper with no PDF yet the title is plain text, so that advertised a
+   click that does nothing. Underline only the link, only on its own hover. */
+.research-list .archive__item:hover .archive__item-title {
+  text-decoration: none;
+}
+
 /* --------------------------------------------------------------------------
    REFERENCE LIST  (_includes/job-market.html)
 

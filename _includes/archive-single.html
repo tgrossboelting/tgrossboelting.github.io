@@ -27,18 +27,26 @@
     {% endif %}
 
     {%- comment -%}
-      A paper's title is plain text, never a link. Papers have no page of their
-      own -- `publications` is output: false in _config.yml -- and a clickable
-      title gives no hint of what it opens. The PDF is reached through the
-      labelled "Paper" link below instead, where a reader can see what they are
-      about to get.
+      Two ways to the same PDF, deliberately: the title itself, and the
+      labelled "Paper" link below. The title is what a reader reaches for
+      first; the label is what tells them what they will get. Papers have no
+      page of their own -- `publications` is output: false in _config.yml --
+      so both point at paperurl.
+
+      Without a paperurl the title is plain text. _custom.scss keeps the
+      hover underline off in that case, so it never advertises a click that
+      does nothing.
 
       Other collections keep the original behaviour, since they still have
       pages of their own.
     {%- endcomment -%}
     <h2 class="archive__item-title" itemprop="headline">
       {% if post.collection == 'publications' %}
-        {{ title }}
+        {% if post.paperurl %}
+          <a href="{% unless post.paperurl contains '://' %}{{ base_path }}{% endunless %}{{ post.paperurl }}">{{ title }}</a>
+        {% else %}
+          {{ title }}
+        {% endif %}
       {% elsif post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
