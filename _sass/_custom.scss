@@ -333,30 +333,61 @@ html[data-theme="dark"] {
   margin-bottom: 2.5em;
 }
 
+/* Page titles ("Research", "CV") in regular weight, like the section labels
+   and paper titles below. The theme sets every heading bold; with three bold
+   levels this close in size nothing led and the page read heavy. Hierarchy now
+   comes from size, with the bold reserved for the name in the masthead and
+   sidebar. */
+.page__title {
+  font-weight: normal;
+}
+
 /* Section labels ("Job Market Paper", "Work in Progress") sit above the paper
-   titles and outrank them: larger, and black against the titles' blue.
+   titles and outrank them: larger, and dark against the titles' blue. Regular
+   weight, for the reason given above.
 
    Both this and the title size below are scoped to classes that exist on the
    homepage and on /research/ alike. Those two pages render the same papers
    through archive-single.html but under different layouts -- `single` wraps
    content in .page__content, `archive` does not -- so anything scoped to a
-   layout wrapper would style one page and not the other. */
+   layout wrapper would style one page and not the other.
+
+   These rules used to be partly duplicated in an inline <style> block in
+   _includes/head/custom.html, whose `.research-list h2 { font-size: 1.15rem }`
+   outranked this rule on /research/ only, so the same label rendered at two
+   sizes. That block is gone; size this here and nowhere else. */
 .research-section {
-  font-size: 1.2em;
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+/* Metadata under a paper title (coauthors, status, links) a step smaller than
+   the body text. */
+.research-list .archive__item p {
+  font-size: 0.85rem;
+}
+
+/* "with ..." line. Body text colour, not the theme's light grey: the grey was
+   too faint to read comfortably. Upright rather than italic, so it reads as
+   plain text under the title. */
+.archive__item-coauthors {
+  margin-top: 0;
+  color: var(--global-text-color);
 }
 
 /* Paper titles.
 
-   Set at 1em, below the section label above them: the label is the heading,
-   a paper title is content. Blue and bold carry it rather than size. In em so
-   it tracks the surrounding type.
+   Set at 1.1em, below the section label above them: the label is the heading,
+   a paper title is content. Blue and size carry it, in regular weight. In em
+   so it tracks the surrounding type.
 
    Underlined on hover, because the title is a link to the PDF -- the same
    link the "Paper" label below repeats. Two routes to one file is deliberate:
    the title is what a reader reaches for, the label is what tells them what
    they get. */
 .research-list .archive__item-title {
-  font-size: 1em;
+  font-size: 1.1em;
+  font-weight: normal;
 
   /* The colour is on the heading, not on the link inside it, so a paper reads
      the same whether or not its PDF is up yet. Papers arriving without a
@@ -388,9 +419,10 @@ html[data-theme="dark"] {
 /* --------------------------------------------------------------------------
    REFERENCE LIST  (_includes/job-market.html)
 
-   Names sit flush left with the affiliation set quieter beside them, so the
-   three names stay scannable. Driven by _data/jobmarket.yml; the whole block
-   disappears if that list is emptied.
+   Names sit flush left as links with the affiliation in plain body text
+   beside them. The affiliation used the theme's light grey, which was too
+   faint to read. Driven by _data/jobmarket.yml; the whole block disappears if
+   that list is emptied.
    -------------------------------------------------------------------------- */
 .reference-list {
   margin-top: 0;
@@ -401,12 +433,7 @@ html[data-theme="dark"] {
     margin-bottom: 0.25em;
   }
 
-  &__affiliation {
-    color: var(--global-text-color-light);
-
-    &::before {
-      content: ", ";
-      color: var(--global-text-color-light);
-    }
+  &__affiliation::before {
+    content: ", ";
   }
 }

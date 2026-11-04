@@ -39,20 +39,20 @@ $caption-font-family : $sans-serif;
    holds the same proportions at every root font step -- one edit moves phone,
    laptop and desktop together instead of fixing one size and breaking another.
 
-   The content column, not the 38em measure cap, is what now binds line length,
-   so this value sets characters per line directly. At the 18px root:
+   60em is 1080px at the 18px root, leaving a ~790px content column beside the
+   sidebar. It was 50em (~610px column), which wrapped most paper titles onto
+   two lines.
 
-       54em ~ 76 chars      50em ~ 68 chars      46em ~ 60 chars
-       52em ~ 72 chars      48em ~ 63 chars      44em ~ 56 chars
-
-   Comfortable reading is 45-75 characters, ideal around 66. Below roughly 44em
-   lines turn choppy; above 54em they run long.
+   Prose line length is NOT set here: the MEASURE block in _custom.scss caps
+   paragraphs, list items and the abstract at 38em (~76 characters), and at
+   this width that cap is what binds. So widening the site gives the paper
+   titles room without making the text lines longer. Above roughly 54em the
+   column is wider than the measure, which is intended.
 
    Tablet portrait (~768px) is the one size this does not reach: there is no
-   sidebar and #main is bounded by the viewport rather than by this cap, so it
-   sits near 76 characters regardless.
+   sidebar and #main is bounded by the viewport rather than by this cap.
    -------------------------------------------------------------------------- */
-$content-max-width : 50em;
+$content-max-width : 60em;
 
 /* --------------------------------------------------------------------------
    SIDEBAR WIDTH
