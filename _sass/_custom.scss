@@ -279,8 +279,8 @@ html[data-theme="dark"] {
 .section-break {
   /* No rule, just air. The <hr> is kept because it is a genuine thematic break
      between the introduction and the paper, and it stays in the document for
-     screen readers -- but the "Job Market Paper" heading already carries its
-     own border-bottom, so a second line above it read as clutter. */
+     screen readers -- but a line here, above the "Job Market Paper" heading
+     (which itself carried a border-bottom until Nov 2026), read as clutter. */
   max-width: none;
   margin: 1.5em 0 1.25em;
   border: 0;
@@ -421,10 +421,17 @@ html[data-theme="dark"] {
    homepage, which also made the two pages differ. The first label in a list
    follows the page title or the homepage introduction, which already leave
    room, so it takes 1em rather than 2.5em. Scoped to .research-list to
-   outrank the theme's `.page__content h2` margins on the homepage. */
+   outrank the theme's `.page__content h2` margins on the homepage.
+
+   The same theme rule underlined section labels on the homepage only
+   (layout/_page.scss), so "Job Market Paper" had a rule under it there and
+   none on /research/. Spacing now does the grouping, so the line goes on
+   both. */
 .research-list .research-section {
   margin-top: 2.5em;
   margin-bottom: 0.5em;
+  padding-bottom: 0;
+  border-bottom: 0;
 
   &:first-of-type {
     margin-top: 1em;
@@ -442,9 +449,8 @@ html[data-theme="dark"] {
 /* JMP WIDTH
 
    The job market paper title, on one line, sets the width of the paper
-   list: its abstract, the other titles and the section labels (with their
-   underline on the homepage) all wrap to exactly that width, whatever font
-   the visitor's system renders.
+   list: its abstract, the other titles and the section labels all wrap to
+   exactly that width, whatever font the visitor's system renders.
 
    How: the list shrinks to fit its content (fit-content), and everything in
    it except the JMP title is given `contain: inline-size`, which makes an
