@@ -327,10 +327,20 @@ html[data-theme="dark"] {
     }
   }
 
-  /* The abstract body is prose, so give it the same measure as the page. */
+  /* The abstract spans the full content column, the same width as the paper
+     title above it. It used to be capped at 38em, but em here resolves
+     against this block's small font size, so the cap came out at ~510px: a
+     long, narrow block under a title nearly 800px wide.
+
+     The p rule lifts the page MEASURE cap (.page__content p, top of this
+     file), which would otherwise still narrow the abstract on the homepage,
+     where the list sits inside .page__content. */
   .archive__item-abstract-body {
     margin-top: 0.5em;
-    max-width: 38em;
+
+    p {
+      max-width: none;
+    }
   }
 }
 
