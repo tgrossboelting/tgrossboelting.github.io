@@ -326,15 +326,19 @@ html[data-theme="dark"] {
   }
 }
 
-/* The row holding the links and the toggle (see archive-single.html). The
-   ::after clears the floated links when a paper has links but no abstract.
+/* The row holding the toggle and the links (see archive-single.html). The
+   ::after clears the floated toggle, so the next paper starts below it.
 
-   The 0.375em top margin is the toggle's own 0.5em at its 0.75 size, so the
-   row sits the same distance below the title whether it starts with links,
-   the toggle, or both. It collapses with the toggle's margin rather than
-   adding to it. */
+   The 0.375em top margin is 0.5em at the toggle's 0.75 size, the gap the
+   toggle had under the title before it shared a row, so every paper keeps
+   the same spacing. A float's own margin would not collapse with the title's,
+   so the row carries it instead.
+
+   container-type gives the open abstract a width to measure against (100cqw,
+   below). */
 .archive__item-actions {
   margin-top: 0.5 * $type-size-6;
+  container-type: inline-size;
 
   &::after {
     content: "";
@@ -345,27 +349,25 @@ html[data-theme="dark"] {
 
 /* In the paper lists the plain rule above is outranked: on the homepage by the
    theme's `.page__content p` margin, and everywhere by the 0.85rem metadata
-   size below. Same size as the "Abstract" toggle beside it. Floated so the
-   toggle's line wraps beside the links and stays put when the abstract
-   opens. */
+   size below. Same size as the "Abstract" toggle beside it, and no margin, so
+   its line lines up with the toggle's. */
 .research-list .archive__item .archive__item-links {
-  float: left;
-  margin: 0 1em 0 0;
+  margin: 0;
   font-size: $type-size-6;
 }
 
+/* Floated so the links' line wraps beside the toggle and stays there when the
+   abstract opens. Closed, the float is as wide as "Abstract"; open, it stays
+   that wide, because the body below opts out of sizing it. */
 .archive__item-abstract {
-  margin: 0.5em 0 0;
+  float: left;
+  margin: 0 1em 0 0;
   font-size: $type-size-6;
 
-  /* overflow: hidden makes the toggle a block formatting context, so it sits
-     beside the floated links as a whole. Without it the fit-content box
-     starts under the float and "Abstract" wraps to the next line. */
   summary {
     cursor: pointer;
     color: var(--global-link-color);
     width: fit-content;
-    overflow: hidden;
 
     &:hover {
       text-decoration: underline;
@@ -378,12 +380,27 @@ html[data-theme="dark"] {
 
      The p rule lifts the page MEASURE cap (.page__content p, top of this
      file), which would otherwise still narrow the abstract on the homepage,
-     where the list sits inside .page__content. */
+     where the list sits inside .page__content.
+
+     width: 100cqw spans the whole row (.archive__item-actions is the
+     container), past the narrow float it sits in. The equal negative margin
+     cancels that width when the float measures its contents, so the float
+     stays as wide as "Abstract" and the links stay on the toggle's line.
+
+     A float keeps its last paragraph's bottom margin inside it, which left
+     20px more space under an open abstract than under a closed one; the
+     last-child rule drops it. */
   .archive__item-abstract-body {
     margin-top: 0.5em;
+    width: 100cqw;
+    margin-right: -100cqw;
 
     p {
       max-width: none;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -465,8 +482,8 @@ html[data-theme="dark"] {
 
    No bottom margin: the theme's 1.3em paragraph margin left "Abstract" about
    40px further down on co-authored papers than on solo ones. Without it the
-   abstract toggle's own 0.5em top margin sets the gap, the same as when it
-   follows the title directly. */
+   top margin of the toggle's row (.archive__item-actions) sets the gap, the
+   same as when it follows the title directly. */
 .archive__item-coauthors {
   margin-top: 0;
   margin-bottom: 0;

@@ -150,11 +150,12 @@
       {% endif %}
 
       {% comment %}
-        The links ("Paper", later "Slides", "Code") and the "Abstract" toggle
-        share one row, links first. The links float left, so the toggle's line
-        wraps beside them and opening the abstract leaves them where they are.
-        A flex or grid row cannot do this: <details> is one box, so the open
-        abstract would be squeezed into the space beside the links.
+        The "Abstract" toggle and the links ("Paper", later "Slides", "Code")
+        share one row, toggle first. The <details> floats left, so the links'
+        line wraps beside it, and opening the abstract leaves them where they
+        are; _custom.scss lets the open abstract span the whole row without
+        widening the float. A flex or grid row cannot do this: <details> is
+        one box, so the open abstract would push the links aside.
       {% endcomment %}
       {% assign abstract = post.content | strip %}
       {% if abstract != '' and post.show_abstract != false %}
@@ -165,15 +166,6 @@
 
       {% if post.paperurl or post.slidesurl or post.bibtexurl or post.codeurl or show_abstract %}
       <div class="archive__item-actions">
-
-      {% if post.paperurl or post.slidesurl or post.bibtexurl or post.codeurl %}
-        <p class="archive__item-links">
-          {% if post.paperurl %}<a href="{% unless post.paperurl contains '://' %}{{ base_path }}{% endunless %}{{ post.paperurl }}">Paper</a>{% endif %}
-          {% if post.slidesurl %}<a href="{% unless post.slidesurl contains '://' %}{{ base_path }}{% endunless %}{{ post.slidesurl }}">Slides</a>{% endif %}
-          {% if post.bibtexurl %}<a href="{% unless post.bibtexurl contains '://' %}{{ base_path }}{% endunless %}{{ post.bibtexurl }}">BibTeX</a>{% endif %}
-          {% if post.codeurl %}<a href="{% unless post.codeurl contains '://' %}{{ base_path }}{% endunless %}{{ post.codeurl }}">Code</a>{% endif %}
-        </p>
-      {% endif %}
 
       {% comment %}
         Folded by default so the list of titles stays scannable; this is the
@@ -191,6 +183,15 @@
           <summary>Abstract</summary>
           <div class="archive__item-abstract-body">{{ post.content }}</div>
         </details>
+      {% endif %}
+
+      {% if post.paperurl or post.slidesurl or post.bibtexurl or post.codeurl %}
+        <p class="archive__item-links">
+          {% if post.paperurl %}<a href="{% unless post.paperurl contains '://' %}{{ base_path }}{% endunless %}{{ post.paperurl }}">Paper</a>{% endif %}
+          {% if post.slidesurl %}<a href="{% unless post.slidesurl contains '://' %}{{ base_path }}{% endunless %}{{ post.slidesurl }}">Slides</a>{% endif %}
+          {% if post.bibtexurl %}<a href="{% unless post.bibtexurl contains '://' %}{{ base_path }}{% endunless %}{{ post.bibtexurl }}">BibTeX</a>{% endif %}
+          {% if post.codeurl %}<a href="{% unless post.codeurl contains '://' %}{{ base_path }}{% endunless %}{{ post.codeurl }}">Code</a>{% endif %}
+        </p>
       {% endif %}
 
       </div>
