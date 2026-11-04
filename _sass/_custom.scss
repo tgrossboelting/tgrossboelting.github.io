@@ -329,10 +329,10 @@ html[data-theme="dark"] {
 /* The row holding the toggle and the links (see archive-single.html). The
    ::after clears the floated toggle, so the next paper starts below it.
 
-   The 0.375em top margin is 0.5em at the toggle's 0.75 size, the gap the
-   toggle had under the title before it shared a row, so every paper keeps
-   the same spacing. A float's own margin would not collapse with the title's,
-   so the row carries it instead.
+   The 0.375em top margin (6.75px at the 18px body size) is the gap the
+   toggle had under the title before it shared a row, when it was set at
+   0.75em, so every paper keeps the same spacing. A float's own margin would
+   not collapse with the title's, so the row carries it instead.
 
    container-type gives the open abstract a width to measure against (100cqw,
    below). */
@@ -353,16 +353,20 @@ html[data-theme="dark"] {
    its line lines up with the toggle's. */
 .research-list .archive__item .archive__item-links {
   margin: 0;
-  font-size: $type-size-6;
+  font-size: 0.85rem;
 }
 
 /* Floated so the links' line wraps beside the toggle and stays there when the
    abstract opens. Closed, the float is as wide as "Abstract"; open, it stays
-   that wide, because the body below opts out of sizing it. */
+   that wide, because the body below opts out of sizing it.
+
+   0.85rem, the co-author line's size, so everything under a paper title is
+   one size. At 0.75em (13.5px) the toggle and "Paper" were the smallest text
+   on the page, a third size in a three-line entry, and read as fine print. */
 .archive__item-abstract {
   float: left;
   margin: 0 1em 0 0;
-  font-size: $type-size-6;
+  font-size: 0.85rem;
 
   summary {
     cursor: pointer;
