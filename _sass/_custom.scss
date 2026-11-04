@@ -192,20 +192,25 @@ html {
 /* --------------------------------------------------------------------------
    LINK COLOUR
 
-   #1a5fb4 is the exact blue defined as `linkblue` in the CV preamble, so the
-   site and the PDF read as one identity. The dark-theme values are lightened;
-   #1a5fb4 does not carry enough contrast against a dark background.
+   #003399 = RGB(0,51,153), the link blue of the JMP and of `linkblue` in the
+   CV and statement preambles (Package/CV, Package/shared/statement_style.tex),
+   so the site and the PDFs read as one identity. If that blue changes in the
+   PDFs, change it here too. (Until Nov 2026 this was #1a5fb4, the CV's
+   earlier blue.) Contrast on white is about 10.9:1. Hover goes darker.
+
+   The dark-theme values are a light tint of the same hue (220 degrees):
+   #003399 itself has almost no contrast against a dark background.
    -------------------------------------------------------------------------- */
 :root {
-  --global-link-color         : #1a5fb4;
-  --global-link-color-hover   : #14488a;
-  --global-link-color-visited : #1a5fb4;
+  --global-link-color         : #003399;
+  --global-link-color-hover   : #002266;
+  --global-link-color-visited : #003399;
 }
 
 html[data-theme="dark"] {
-  --global-link-color         : #7ab0e8;
-  --global-link-color-hover   : #a8cbf0;
-  --global-link-color-visited : #7ab0e8;
+  --global-link-color         : #89adf5;
+  --global-link-color-hover   : #b8cef9;
+  --global-link-color-visited : #89adf5;
 }
 
 /* --------------------------------------------------------------------------
