@@ -405,8 +405,38 @@ html[data-theme="dark"] {
   }
 }
 
+/* SPACING in the paper lists, three levels, each clearly larger than the one
+   below it, so the eye groups a label with its papers:
+
+     section label -> its first paper     0.5em of the label   ~11px
+     paper         -> next paper          1.6em                ~29px
+     last paper    -> next section label  2.5em of the label   ~54px
+
+   These were 40px, 45px and 45px, with 43px under the page title: four
+   relationships at one distance, so "Work in Progress" sat as far from its
+   own papers as from the paper above it and belonged to neither.
+
+   The title's margin-top is zeroed so the label's margin-bottom alone sets
+   the first gap; the theme gave titles 2em on /research/ and 1em on the
+   homepage, which also made the two pages differ. The first label in a list
+   follows the page title or the homepage introduction, which already leave
+   room, so it takes 1em rather than 2.5em. Scoped to .research-list to
+   outrank the theme's `.page__content h2` margins on the homepage. */
+.research-list .research-section {
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+
+  &:first-of-type {
+    margin-top: 1em;
+  }
+}
+
+.research-list .archive__item-title {
+  margin-top: 0;
+}
+
 .research-list .archive__item {
-  margin-bottom: 2.5em;
+  margin-bottom: 1.6em;
 }
 
 /* JMP WIDTH
