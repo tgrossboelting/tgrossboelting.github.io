@@ -47,7 +47,7 @@
 {% endif %}
 
 {% if jm.references and jm.references.size > 0 %}
-  <p><strong>References</strong></p>
+  <p class="reference-list__label"><strong>References</strong></p>
   <ul class="reference-list">
     {% for ref in jm.references %}
       {% if ref.name %}

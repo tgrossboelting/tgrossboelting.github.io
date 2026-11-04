@@ -586,3 +586,12 @@ html[data-theme="dark"] {
     content: ", ";
   }
 }
+
+/* The "References" label sits as close to the first name as the names sit
+   to each other, so it reads as the list's heading. With the theme's 1.3em
+   paragraph margin it was 23px from the list and 23px from the contact lines
+   above, attached to neither. The `p` matches the theme's `.page__content p`
+   in specificity, and this file loads later, so this margin wins. */
+p.reference-list__label {
+  margin-bottom: 0.25em;
+}
