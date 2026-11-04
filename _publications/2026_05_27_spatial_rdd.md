@@ -1,5 +1,5 @@
 ---
-title: "Spatial Regression Discontinuity Designs"
+title: "Segment Fixed Effects in Spatial Regression Discontinuity Designs"
 collection: publications
 category: wip
 permalink: /2026_05_27_spatial_rdd

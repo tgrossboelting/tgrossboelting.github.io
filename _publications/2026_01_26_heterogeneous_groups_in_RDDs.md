@@ -9,32 +9,4 @@ date: 2026-01-26
 # venue: 'Journal 1'
 citation: 'Großbölting, Tobias. (2026). &quot;Composition Bias and Covariate Adjustment in Regression Discontinuity Designs.&quot; <i>Working Paper</i>.'
 ---
-{% comment %}
-ABSTRACT WITHHELD -- the results below are outdated and should not be read by
-anyone. Wrapped in a Liquid comment rather than deleted, so the text survives
-in version control while rendering nowhere: not on the research list, not on
-the homepage, and not on this paper's own page.
-
-Because Liquid strips this before the body reaches the template, post.content
-is empty, so archive-single.html drops the "Show abstract" fold on its own --
-no show_abstract: false needed.
-
-To publish a corrected abstract, replace the text inside this comment and
-delete the {% raw %}{% comment %}{% endraw %} / {% raw %}{% endcomment %}{% endraw %} wrapper.
-
-Abstract: I study covariate adjustment in regression discontinuity designs with discrete covariates,
-such as education level, occupation, or gender, that partition the sample into subgroups with
-heterogeneous regression functions. The standard local-polynomial RD estimator pools observations
-across these heterogeneous groups, generating an additive pooling bias whenever group
-composition varies along the running variable. I show that covariate adjustment can eliminate
-this pooling bias from the leading term of the worst-case bias under a uniform asymptotic
-framework. Specifically, I propose the Stratified RD estimator, which avoids pooling through
-stratification: It first estimates group-specific treatment effects within each group and group
-weights at the cutoff and then forms a weighted average. I derive an explicit range of bandwidth
-choices under which the Stratified RD estimator achieves both weakly lower asymptotic variance
-and worst-case bias than the local-polynomial estimator, over a common smoothness class. These
-improvements yield shorter honest confidence intervals for the same target parameter. A placebo
-exercise using data from the Current Population Survey shows reductions in MSE of 8% to
-33% and honest confidence intervals that are 6% to 16% shorter depending on sample sizes and
-bandwidths.
-{% endcomment %}
+In regression discontinuity designs covariates can be imbalanced in the samples used for estimation, even if their distribution is continuous in the running variable. I demonstrate that under such covariate imbalance the standard local polynomial RD estimator (base RD) implicitly compares units with different covariate values. This induces an additive term in the bias of the base RD estimator, which I refer to as composition bias. To reduce composition bias, I argue that researchers should adjust for pre-treatment covariates so that the estimator compares only units with similar covariate values. Specifically, I propose the Stratified RD estimator and prove that it has asymptotically weakly lower variance and worst-case bias than the base RD estimator, which leads to shorter bias-aware confidence intervals for the average treatment effect at the cutoff. In a simulation calibrated to replication data from a study of a merit-based financial aid program in Colombia, stratifying on parental education reduces the bias relative to the base RD estimator by 14–23%, and stratifying on parental education and whether a student lives in a metropolitan area reduces it by 25–30%, depending on the bandwidth.
