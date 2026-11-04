@@ -416,9 +416,15 @@ html[data-theme="dark"] {
 
 /* "with ..." line. Body text colour, not the theme's light grey: the grey was
    too faint to read comfortably. Upright rather than italic, so it reads as
-   plain text under the title. */
+   plain text under the title.
+
+   No bottom margin: the theme's 1.3em paragraph margin left "Abstract" about
+   40px further down on co-authored papers than on solo ones. Without it the
+   abstract toggle's own 0.5em top margin sets the gap, the same as when it
+   follows the title directly. */
 .archive__item-coauthors {
   margin-top: 0;
+  margin-bottom: 0;
   color: var(--global-text-color);
 }
 
