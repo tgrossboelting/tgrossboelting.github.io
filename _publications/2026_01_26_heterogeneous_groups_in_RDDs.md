@@ -6,6 +6,9 @@ permalink: /2026_01_26_heterogeneous_groups_in_RDDs
 excerpt: 'In this paper, I study covariate adjustment in regression discontinuity designs estimated with
 data from potentially heterogeneous groups.'
 date: 2026-01-26
+# Links the title and adds the "Paper" button. To update the paper, replace
+# the file under files/ and keep this name, so the link stays the same.
+paperurl: "/files/Grossboelting_JMP_2026.pdf"
 # venue: 'Journal 1'
 citation: 'Großbölting, Tobias. (2026). &quot;Composition Bias and Covariate Adjustment in Regression Discontinuity Designs.&quot; <i>Working Paper</i>.'
 ---

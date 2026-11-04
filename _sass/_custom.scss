@@ -302,15 +302,42 @@ html[data-theme="dark"] {
   font-weight: bold;
 }
 
+/* "Paper" (and later Slides, Code, ...) as small outlined buttons in the link
+   blue, filling in on hover. They repeat the title's link on purpose: the
+   title is what a reader clicks, the button says what they will get. */
 .archive__item-links {
   margin: 0.5em 0;
   font-size: $type-size-6;
 
-  a + a {
-    margin-left: 0.75em;
-    padding-left: 0.75em;
-    border-left: 1px solid var(--global-border-color);
+  a {
+    display: inline-block;
+    padding: 0.1em 0.65em;
+    border: 1px solid var(--global-link-color);
+    border-radius: 3px;
+    color: var(--global-link-color);
+    line-height: 1.5;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--global-link-color);
+      color: var(--global-bg-color);
+      text-decoration: none;
+    }
   }
+
+  a + a {
+    margin-left: 0.4em;
+  }
+}
+
+/* In the paper lists the plain rule above is outranked: on the homepage by the
+   theme's `.page__content p` margin (which left a 20px gap under the button),
+   and everywhere by the 0.85rem metadata size below. Same size as the
+   "Abstract" toggle under it, and the same small gaps as the rest of a paper
+   entry. */
+.research-list .archive__item .archive__item-links {
+  margin: 0.4em 0 0;
+  font-size: $type-size-6;
 }
 
 .archive__item-abstract {
@@ -451,8 +478,12 @@ html[data-theme="dark"] {
      below), so blue here is a visual accent, not a promise of a click. */
   color: var(--global-link-color);
 
+  /* text-decoration: none overrides the theme's `.page__content a`
+     underline on the homepage, so a linked title looks the same there as on
+     /research/ and is underlined only on hover. */
   a {
     color: inherit;
+    text-decoration: none;
 
     &:hover {
       color: var(--global-link-color-hover);
