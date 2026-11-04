@@ -149,6 +149,23 @@
         <p class="archive__item-meta"><strong>Presentations:</strong> {{ post.presentations }}</p>
       {% endif %}
 
+      {% comment %}
+        The links ("Paper", later "Slides", "Code") and the "Abstract" toggle
+        share one row, links first. The links float left, so the toggle's line
+        wraps beside them and opening the abstract leaves them where they are.
+        A flex or grid row cannot do this: <details> is one box, so the open
+        abstract would be squeezed into the space beside the links.
+      {% endcomment %}
+      {% assign abstract = post.content | strip %}
+      {% if abstract != '' and post.show_abstract != false %}
+        {% assign show_abstract = true %}
+      {% else %}
+        {% assign show_abstract = false %}
+      {% endif %}
+
+      {% if post.paperurl or post.slidesurl or post.bibtexurl or post.codeurl or show_abstract %}
+      <div class="archive__item-actions">
+
       {% if post.paperurl or post.slidesurl or post.bibtexurl or post.codeurl %}
         <p class="archive__item-links">
           {% if post.paperurl %}<a href="{% unless post.paperurl contains '://' %}{{ base_path }}{% endunless %}{{ post.paperurl }}">Paper</a>{% endif %}
@@ -169,12 +186,14 @@
 
           show_abstract: false
       {% endcomment %}
-      {% assign abstract = post.content | strip %}
-      {% if abstract != '' and post.show_abstract != false %}
+      {% if show_abstract %}
         <details class="archive__item-abstract">
           <summary>Abstract</summary>
           <div class="archive__item-abstract-body">{{ post.content }}</div>
         </details>
+      {% endif %}
+
+      </div>
       {% endif %}
 
     {% endif %}

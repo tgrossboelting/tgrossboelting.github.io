@@ -302,41 +302,55 @@ html[data-theme="dark"] {
   font-weight: bold;
 }
 
-/* "Paper" (and later Slides, Code, ...) as small outlined buttons in the link
-   blue, filling in on hover. They repeat the title's link on purpose: the
-   title is what a reader clicks, the button says what they will get. */
+/* "Paper" (and later Slides, Code, ...) styled like the "Abstract" toggle
+   they share a row with: link blue, same size, underlined on hover. They
+   repeat the title's link on purpose: the title is what a reader clicks, the
+   label says what they will get. (They were outlined buttons on a line of
+   their own above the toggle; that read as a second, heavier control.) */
 .archive__item-links {
   margin: 0.5em 0;
   font-size: $type-size-6;
 
   a {
-    display: inline-block;
-    padding: 0.1em 0.65em;
-    border: 1px solid var(--global-link-color);
-    border-radius: 3px;
     color: var(--global-link-color);
-    line-height: 1.5;
     text-decoration: none;
 
     &:hover {
-      background: var(--global-link-color);
-      color: var(--global-bg-color);
-      text-decoration: none;
+      color: var(--global-link-color);
+      text-decoration: underline;
     }
   }
 
   a + a {
-    margin-left: 0.4em;
+    margin-left: 1em;
+  }
+}
+
+/* The row holding the links and the toggle (see archive-single.html). The
+   ::after clears the floated links when a paper has links but no abstract.
+
+   The 0.375em top margin is the toggle's own 0.5em at its 0.75 size, so the
+   row sits the same distance below the title whether it starts with links,
+   the toggle, or both. It collapses with the toggle's margin rather than
+   adding to it. */
+.archive__item-actions {
+  margin-top: 0.5 * $type-size-6;
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
   }
 }
 
 /* In the paper lists the plain rule above is outranked: on the homepage by the
-   theme's `.page__content p` margin (which left a 20px gap under the button),
-   and everywhere by the 0.85rem metadata size below. Same size as the
-   "Abstract" toggle under it, and the same small gaps as the rest of a paper
-   entry. */
+   theme's `.page__content p` margin, and everywhere by the 0.85rem metadata
+   size below. Same size as the "Abstract" toggle beside it. Floated so the
+   toggle's line wraps beside the links and stays put when the abstract
+   opens. */
 .research-list .archive__item .archive__item-links {
-  margin: 0.4em 0 0;
+  float: left;
+  margin: 0 1em 0 0;
   font-size: $type-size-6;
 }
 
@@ -344,10 +358,14 @@ html[data-theme="dark"] {
   margin: 0.5em 0 0;
   font-size: $type-size-6;
 
+  /* overflow: hidden makes the toggle a block formatting context, so it sits
+     beside the floated links as a whole. Without it the fit-content box
+     starts under the float and "Abstract" wraps to the next line. */
   summary {
     cursor: pointer;
     color: var(--global-link-color);
     width: fit-content;
+    overflow: hidden;
 
     &:hover {
       text-decoration: underline;
