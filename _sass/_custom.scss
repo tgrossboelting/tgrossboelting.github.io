@@ -333,18 +333,23 @@ html[data-theme="dark"] {
   margin-bottom: 2.5em;
 }
 
-/* Page titles ("Research", "CV") in regular weight, like the section labels
-   and paper titles below. The theme sets every heading bold; with three bold
-   levels this close in size nothing led and the page read heavy. Hierarchy now
-   comes from size, with the bold reserved for the name in the masthead and
-   sidebar. */
+/* HEADING HIERARCHY on the paper pages, three levels:
+
+     page title     "Research", "CV"            2em    bold   dark
+     section label  "Job Market Paper", ...     1.2em  bold   dark
+     paper title                                1.1em  regular blue
+
+   Labels and paper titles are told apart by weight and colour; the page title
+   stands clear of the labels by size. The theme's 1.563em page title sat too
+   close to the labels, and with everything bold (as it was before the paper
+   titles went regular) nothing led and the page read heavy. */
 .page__title {
-  font-weight: normal;
+  font-size: 2em;
 }
 
 /* Section labels ("Job Market Paper", "Work in Progress") sit above the paper
-   titles and outrank them: larger, and dark against the titles' blue. Regular
-   weight, for the reason given above.
+   titles and outrank them: larger, bold (the theme's heading weight), and
+   dark against the titles' blue.
 
    Both this and the title size below are scoped to classes that exist on the
    homepage and on /research/ alike. Those two pages render the same papers
@@ -357,8 +362,7 @@ html[data-theme="dark"] {
    outranked this rule on /research/ only, so the same label rendered at two
    sizes. That block is gone; size this here and nowhere else. */
 .research-section {
-  font-size: 1.3em;
-  font-weight: normal;
+  font-size: 1.2em;
 }
 
 /* Metadata under a paper title (coauthors, status, links) a step smaller than
