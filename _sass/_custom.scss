@@ -327,10 +327,9 @@ html[data-theme="dark"] {
     }
   }
 
-  /* The abstract spans the full content column, the same width as the paper
-     title above it. It used to be capped at 38em, but em here resolves
-     against this block's small font size, so the cap came out at ~510px: a
-     long, narrow block under a title nearly 800px wide.
+  /* No width cap of its own: the abstract fills the paper list, which JMP
+     WIDTH below sizes to the job market paper title. (A 38em cap here used
+     to resolve against this block's small font size and came out ~510px.)
 
      The p rule lifts the page MEASURE cap (.page__content p, top of this
      file), which would otherwise still narrow the abstract on the homepage,
@@ -346,6 +345,35 @@ html[data-theme="dark"] {
 
 .research-list .archive__item {
   margin-bottom: 2.5em;
+}
+
+/* JMP WIDTH
+
+   The job market paper title, on one line, sets the width of the paper
+   list: its abstract, the other titles and the section labels (with their
+   underline on the homepage) all wrap to exactly that width, whatever font
+   the visitor's system renders.
+
+   How: the list shrinks to fit its content (fit-content), and everything in
+   it except the JMP title is given `contain: inline-size`, which makes an
+   element count as zero width when its parent measures its content. So the
+   only thing the list measures is the JMP title; everything else then fills
+   the width that title produced. max-width keeps it inside the column on
+   narrow screens, where the title wraps like any other.
+
+   Scoped with :has() so it only applies while a JMP is in the list. Without
+   that guard, a list with no JMP would measure nothing and collapse to zero
+   width. Browsers without :has() or containment simply keep the full column
+   width, as before. */
+.research-list:has(.archive__item--jmp) {
+  width: fit-content;
+  max-width: 100%;
+
+  .research-section,
+  .archive__item:not(.archive__item--jmp),
+  .archive__item--jmp > :not(.archive__item-title) {
+    contain: inline-size;
+  }
 }
 
 /* HEADING HIERARCHY on the paper pages, three levels:

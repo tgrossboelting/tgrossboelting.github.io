@@ -39,20 +39,28 @@ $caption-font-family : $sans-serif;
    holds the same proportions at every root font step -- one edit moves phone,
    laptop and desktop together instead of fixing one size and breaking another.
 
-   60em is 1080px at the 18px root, leaving a ~790px content column beside the
-   sidebar. It was 50em (~610px column), which wrapped most paper titles onto
-   two lines.
+   Sized around the job market paper title: the content column is just wide
+   enough for that title to sit on one line, and the paper list then shrinks
+   to the title's exact width (JMP WIDTH in _custom.scss).
+
+   The column is the cap minus 16.25em of fixed parts (1em padding each side,
+   the 12.5rem sidebar, the 1.75em gap). The title is 1.1em type and measured
+   35.3 title-ems wide in Segoe UI (Windows), 35.7 in Helvetica/Arial and
+   Roboto, and 37.9 in Inter, used as a wide stand-in for the Mac system
+   font. 37.9 x 1.1 = 41.7em, so a 42em column holds it everywhere:
+
+       58.25em - 16.25em = 42em column  (756px at the 18px root)
+
+   Retitle the JMP and this needs re-measuring. Too small and the title wraps
+   onto a second line; too large only leaves unused room to its right.
 
    Prose line length is NOT set here: the MEASURE block in _custom.scss caps
-   paragraphs, list items and the abstract at 38em (~76 characters), and at
-   this width that cap is what binds. So widening the site gives the paper
-   titles room without making the text lines longer. Above roughly 54em the
-   column is wider than the measure, which is intended.
+   homepage paragraphs at 38em (~76 characters).
 
    Tablet portrait (~768px) is the one size this does not reach: there is no
    sidebar and #main is bounded by the viewport rather than by this cap.
    -------------------------------------------------------------------------- */
-$content-max-width : 60em;
+$content-max-width : 58.25em;
 
 /* --------------------------------------------------------------------------
    SIDEBAR WIDTH

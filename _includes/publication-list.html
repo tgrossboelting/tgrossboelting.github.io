@@ -36,11 +36,15 @@
 {%- comment -%}
   No <hr /> after the heading: layout/base.scss already gives h2 a
   border-bottom, so adding a rule here drew two lines under the title.
+
+  The heading sits INSIDE .research-list, as it does on /research/, so the
+  list's width (sized to the job market paper title, see JMP WIDTH in
+  _custom.scss) also bounds the heading and its underline.
 {%- endcomment -%}
+<div class="research-list">
 {%- if list_heading %}
 <h2 class="research-section">{{ list_heading }}</h2>
-{% endif %}
-<div class="research-list">
+{%- endif %}
 {%- for post in pubs reversed %}
 {% include archive-single.html %}
 {%- endfor %}
